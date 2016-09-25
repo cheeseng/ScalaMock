@@ -21,14 +21,14 @@
 package org.scalamock.scalatest
 
 import org.scalamock.clazz.Mock
-import org.scalatest.Suite
+import org.scalatest.TestSuite
 
 /**
  * Trait that can be mixed into a [[http://www.scalatest.org/ ScalaTest]] suite to provide
  * mocking support.
  *
  * {{{
- * class CoffeeMachineTest extends FlatSpec with ShouldMatchers with MockFactory {
+ * class CoffeeMachineTest extends FlatSpec with Matchers with MockFactory {
  *
  * 	"CoffeeMachine" should "not turn on the heater when the water container is empty" in {
  * 	    val waterContainerMock = mock[WaterContainer]
@@ -66,7 +66,7 @@ import org.scalatest.Suite
  * 
  * {{{
  * // Please note that this test suite mixes in OneInstancePerTest
- * class CoffeeMachineTest extends FlatSpec with ShouldMatchers with OneInstancePerTest with MockFactory {
+ * class CoffeeMachineTest extends FlatSpec with Matchers with OneInstancePerTest with MockFactory {
  * 	// shared objects
  * 	val waterContainerMock = mock[WaterContainer]
  * 	val heaterMock = mock[Heater]
@@ -99,7 +99,7 @@ import org.scalatest.Suite
  * interfere with each other while they can have shared mocks and expectations.
  * 
  * {{{
- * class CoffeeMachineTest extends FlatSpec with ShouldMatchers with MockFactory {
+ * class CoffeeMachineTest extends FlatSpec with Matchers with MockFactory {
  * 	trait Test { // fixture context
  * 	    // shared objects
  * 	    val waterContainerMock = mock[WaterContainer]
@@ -137,5 +137,5 @@ import org.scalatest.Suite
  * 
  * See [[org.scalamock]] for overview documentation.
  */
-trait MockFactory extends AbstractMockFactory with Mock { this: Suite =>
+trait MockFactory extends AbstractMockFactory with Mock { this: TestSuite =>
 }

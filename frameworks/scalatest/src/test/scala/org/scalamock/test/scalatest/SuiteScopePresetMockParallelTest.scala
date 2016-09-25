@@ -23,7 +23,7 @@ package org.scalamock.test.scalatest
 import org.scalamock.scalatest.MockFactory
 import org.scalamock.test.mockable.TestTrait
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import org.scalatest.ParallelTestExecution
 
 /**
@@ -31,7 +31,7 @@ import org.scalatest.ParallelTestExecution
  *
  *  Tests for issue #25
  */
-class SuiteScopePresetMockParallelTest extends FlatSpec with ShouldMatchers with ParallelTestExecution with MockFactory {
+class SuiteScopePresetMockParallelTest extends FlatSpec with Matchers with ParallelTestExecution with MockFactory {
   // please note that this test suite mixes in ParallelTestExecution trait
 
   val mockWithExpectationsPredefined = mock[TestTrait]

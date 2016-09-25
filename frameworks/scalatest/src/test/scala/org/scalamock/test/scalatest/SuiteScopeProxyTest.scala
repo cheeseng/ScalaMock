@@ -23,7 +23,7 @@ package org.scalamock.test.scalatest
 import org.scalamock.test.mockable.TestTrait
 import org.scalatest.FlatSpec
 import org.scalatest.ParallelTestExecution
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import org.scalatest.OneInstancePerTest
 import org.scalamock.scalatest.proxy.MockFactory
 
@@ -32,7 +32,7 @@ import org.scalamock.scalatest.proxy.MockFactory
  *
  *  Test for issue #35
  */
-class SuiteScopeProxyMockTest extends FlatSpec with ShouldMatchers with OneInstancePerTest with MockFactory {
+class SuiteScopeProxyMockTest extends FlatSpec with Matchers with OneInstancePerTest with MockFactory {
   // please note that this test suite mixes in OneInstancePerTest trait
 
   val mockWithoutExpectationsPredefined = mock[TestTrait]

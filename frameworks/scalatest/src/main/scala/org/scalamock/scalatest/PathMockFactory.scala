@@ -22,7 +22,7 @@ package org.scalamock.scalatest
 
 import org.scalamock.MockFactoryBase
 import org.scalamock.clazz.Mock
-import org.scalatest.exceptions.TestFailedException
+import org.scalatest.exceptions.{TestFailedException, StackDepthException}
 import org.scalatest.{ SuiteMixin, Suite }
 
 /**
@@ -39,7 +39,7 @@ trait PathMockFactory extends SuiteMixin with MockFactoryBase with Mock {
   type ExpectationException = TestFailedException
 
   protected def newExpectationException(message: String, methodName: Option[Symbol]) =
-    new TestFailedException(_ => Some(message), None, failedCodeStackDepthFn(methodName))
+    new TestFailedException((e: StackDepthException) => Some(message), None, failedCodeStackDepthFn(methodName))
 
   /**
    * Verify all expectations.

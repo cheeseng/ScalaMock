@@ -21,10 +21,10 @@
 package org.scalamock.scalatest
 
 import org.scalamock.MockFactoryBase
-import org.scalatest.exceptions.TestFailedException
-import org.scalatest.{Failed, Outcome, Suite, SuiteMixin}
+import org.scalatest.exceptions.{TestFailedException, StackDepthException}
+import org.scalatest.{Failed, Outcome, TestSuite, TestSuiteMixin}
 
-trait AbstractMockFactory extends SuiteMixin with MockFactoryBase { this: Suite =>
+trait AbstractMockFactory extends TestSuiteMixin with MockFactoryBase { this: TestSuite =>
   
   type ExpectationException = TestFailedException
   
@@ -48,7 +48,7 @@ trait AbstractMockFactory extends SuiteMixin with MockFactoryBase { this: Suite 
   }
 
   protected def newExpectationException(message: String, methodName: Option[Symbol]) =
-    new TestFailedException(_ => Some(message), None, failedCodeStackDepthFn(methodName))
+    new TestFailedException((e: StackDepthException) => Some(message), None, failedCodeStackDepthFn(methodName))
 
   protected var autoVerify = true
 }
